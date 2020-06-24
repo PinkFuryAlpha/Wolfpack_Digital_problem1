@@ -31,10 +31,25 @@ public class Main {
         return wolfRoutine;
     }
 
-    //b
-    public static int b(int rabbitsAtNightTogether){
-        return (rabbitsAtNightTogether-1)/3;
+    //b)
+    public static boolean isValid(int number)
+    {
+        // so from the given number of rabbits we must check if the wolfs can eat and if in the morning there are enough rabbits to split it again
+        // there are 3 wolfs in the group and in the morning we do it again so there would be 4 splits
+
+        for(int i=0;i<4;i++){
+            int temp=(number-1)%3;
+            if(temp==0){
+                number=((number-1)/3)*2;
+            } else {
+                return false;
+            }
+        }
+
+        System.out.println("In the morning in each pile is: "+number/2);
+        return true;
     }
+
 
     //c
 
@@ -58,7 +73,7 @@ public class Main {
 
      // now we check if the number is valid, if it is not we subtract a 3 from it and check if it is valid
 
-     while(rabbits_max_valid-3>0){
+     while(rabbits_max_valid-3>16){
             if(isValid(rabbits_max_valid)){
                 System.out.println("Found!");
                 return rabbits_max_valid;
@@ -72,21 +87,5 @@ public class Main {
      return -1;
     }
 
-    public static boolean isValid(int number)
-    {
-        // so from the given number of rabbits we must check if the wolfs can eat and if in the morning there are enough rabbits to split it again
-        // there are 3 wolfs in the group and in the morning we do it again so there would be 4 splits
 
-        for(int i=0;i<4;i++){
-            int temp=(number-1)%3;
-            if(temp==0){
-                number=((number-1)/3)*2;
-            } else {
-                return false;
-            }
-        }
-
-        System.out.println("In the morning in each pile is: "+number/2);
-        return true;
-    }
 }
